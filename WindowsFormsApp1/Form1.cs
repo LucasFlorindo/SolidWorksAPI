@@ -28,7 +28,16 @@ namespace WindowsFormsApp1
         {
          
             // Substituir (Visivel.Checked, Versão do seu SW);
-            objSW.AbrirSolidworks(Visivel.Checked, 31);
+           
+
+            try
+            {
+                objSW.AbrirSolidworks(Visivel.Checked, 31);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void chkinv_CheckedChanged(object sender, EventArgs e)
@@ -38,6 +47,15 @@ namespace WindowsFormsApp1
 
         private void btnFecharSW_Click(object sender, EventArgs e)
         {
+            try
+            {
+                objSW.FecharSolidworks();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERRO" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }
